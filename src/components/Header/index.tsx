@@ -1,10 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom'
 
 import { ShoppingCartIcon } from '../ShoppingCartIcon'
+import { useShoppingCart } from '../../hooks/useShoppingCart'
 
 import styles from './styles.module.css'
 
 export function Header() {
+  const { cart } = useShoppingCart()
   const navigate = useNavigate()
 
   return (
@@ -16,7 +18,7 @@ export function Header() {
       <Link to="/shopping-cart" className={styles.shoppingCart}>
         <div className={styles.info}>
           <p className={styles.myCart}>Meu Carrinho</p>
-          <p className={styles.quantity}>0 itens</p>
+          <p className={styles.quantity}>{cart.length} itens</p>
         </div>
 
         <ShoppingCartIcon />
