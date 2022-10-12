@@ -1,3 +1,19 @@
+:root {
+  --white: #ffffff;
+  --black: #000000;
+
+  --blue-500: #009edd;
+  --blue-800: #3f3d56;
+  --blue-900: #2f2e41;
+
+  --gray-100: #e6e6e6;
+  --gray-200: #d9d9d9;
+  --gray-600: #999999;
+  --gray-900: #333333;
+
+  --pink-500: #ffb6b6;
+}
+
 html,
 body,
 div,
@@ -126,4 +142,26 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--blue-900);
+  color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body,
+input,
+textarea,
+button {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
 }
