@@ -1,22 +1,15 @@
 import { useEffect, useState } from 'react'
 
-import { AddToShoppingCartIcon } from '../../components/AddToShoppingCartIcon'
 import { Loader } from '../../components/Loader'
+import { AddToShoppingCartIcon } from '../../components/Icons/AddToShoppingCartIcon'
 import { MainLayout } from '../../layouts/MainLayout'
 
 import { useShoppingCart } from '../../hooks/useShoppingCart'
 import { http } from '../../services/http'
 import { formatCurrencyToBRL } from '../../utils/formatters'
+import { Movie } from '../../types/movies'
 
 import styles from './styles.module.css'
-
-export interface Movie {
-  id: number
-  title: string
-  image: string
-  price: number
-  quantity: number
-}
 
 export function Home() {
   const { cart, addToCart } = useShoppingCart()

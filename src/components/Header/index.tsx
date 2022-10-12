@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 
-import { ShoppingCartIcon } from '../ShoppingCartIcon'
+import { ShoppingCartIcon } from '../Icons/ShoppingCartIcon'
+
 import { useShoppingCart } from '../../hooks/useShoppingCart'
 
 import styles from './styles.module.css'

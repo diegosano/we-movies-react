@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useMemo, useState } from 'react'
 
-import { Movie } from '../pages/Home'
+import { Movie } from '../types/movies'
 
 interface ShoppingCartContextType {
   cart: Movie[]

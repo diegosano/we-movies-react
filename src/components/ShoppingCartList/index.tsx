@@ -1,11 +1,12 @@
 import { useNavigate } from 'react-router-dom'
-import { useShoppingCart } from '../../hooks/useShoppingCart'
 
-import { TrashIcon } from '../TrashIcon'
-import { Movie } from '../../pages/Home'
+import { ShoppingCartItem } from '../ShoppingCartItem'
+
+import { formatCurrencyToBRL } from '../../utils/formatters'
+import { useShoppingCart } from '../../hooks/useShoppingCart'
+import { Movie } from '../../types/movies'
 
 import styles from './styles.module.css'
-import { formatCurrencyToBRL } from '../../utils/formatters'
 
 interface ShoppingCartListProps {
   items: Movie[]
@@ -14,8 +15,7 @@ interface ShoppingCartListProps {
 export function ShoppingCartList({ items }: ShoppingCartListProps) {
   const navigate = useNavigate()
 
-  const { clearCart, addToCart, removeFromCart, removeAllFromId, total } =
-    useShoppingCart()
+  const { clearCart, total } = useShoppingCart()
 
   function handleCheckout() {
     clearCart()
@@ -32,50 +32,7 @@ export function ShoppingCartList({ items }: ShoppingCartListProps) {
 
       <ul className={styles.list}>
         {items.map((item) => (
-          <li key={item.id}>
-            <div className={styles.imageContainer}>
-              <img src={item.image} alt={item.title} />
-            </div>
-
-            <div className={styles.infoContainer}>
-              <p>{item.title}</p>
-              <span>R$ {item.price}</span>
-            </div>
-
-            <div className={styles.quantityContainer}>
-              <button
-                type="button"
-                className={styles.quantityButton}
-                onClick={() => removeFromCart(item.id)}
-              >
-                -
-              </button>
-              <p className={styles.quantity}>{item.quantity}</p>
-              <button
-                type="button"
-                className={styles.quantityButton}
-                onClick={() => addToCart(item)}
-              >
-                +
-              </button>
-            </div>
-
-            <div className={styles.subtotalContainer}>
-              <p className={styles.subtotal}>
-                {formatCurrencyToBRL(item.price * item.quantity)}
-              </p>
-            </div>
-
-            <div className={styles.buttonContainer}>
-              <button
-                type="button"
-                className={styles.removeButton}
-                onClick={() => removeAllFromId(item.id)}
-              >
-                <TrashIcon />
-              </button>
-            </div>
-          </li>
+          <ShoppingCartItem key={item.id} item={item} />
         ))}
       </ul>
 
