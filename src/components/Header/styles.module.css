@@ -1,0 +1,40 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 12px 23px;
+
+  width: 100%;
+  max-width: 734px;
+  margin: 16px auto 0;
+}
+
+.title {
+  font-size: 20px;
+  line-height: 27px;
+}
+
+.shoppingCart {
+  display: flex;
+}
+
+.shoppingCart > svg {
+  margin-top: 4px;
+}
+
+.info {
+  margin-right: 8px;
+}
+
+.myCart {
+  font-size: 14px;
+  line-height: 19px;
+  font-weight: 600;
+}
+
+.quantity {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  color: var(--gray-600);
+  text-align: right;
+}
