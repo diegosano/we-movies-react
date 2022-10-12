@@ -1,0 +1,29 @@
+.emptyText {
+  font-size: 20px;
+  line-height: 27px;
+  color: var(--blue-900);
+  margin: 62px 0 49px;
+}
+
+.divider {
+  width: 100%;
+  max-width: 447px;
+  height: 1px;
+  background: var(--blue-900);
+}
+
+.button {
+  width: 180px;
+  height: 40px;
+  background: var(--blue-500);
+  color: var(--white);
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
+  margin-top: 35px;
+}
+
+.button:hover {
+  background-color: var(--blue-800);
+}

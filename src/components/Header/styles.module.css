@@ -11,10 +11,27 @@
 .title {
   font-size: 20px;
   line-height: 27px;
+  cursor: pointer;
+}
+
+.title:hover {
+  opacity: 0.8;
 }
 
 .shoppingCart {
   display: flex;
+  text-decoration: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.shoppingCart:visited {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+.shoppingCart:hover {
+  opacity: 0.8;
 }
 
 .shoppingCart > svg {
