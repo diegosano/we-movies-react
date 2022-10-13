@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 
 import { Loader } from '../../components/Loader'
 import { AddToShoppingCartIcon } from '../../components/Icons/AddToShoppingCartIcon'
 import { MainLayout } from '../../layouts/MainLayout'
 
 import { useShoppingCart } from '../../hooks/useShoppingCart'
-import { http } from '../../services/http'
+import { useMovies } from '../../hooks/useMovies'
 import { formatCurrencyToBRL } from '../../utils/formatters'
 import { Movie } from '../../types/movies'
 
@@ -13,33 +13,20 @@ import styles from './styles.module.css'
 
 export function Home() {
   const { cart, addToCart } = useShoppingCart()
-  const [movies, setMovies] = useState<Movie[]>([])
-
-  useEffect(() => {
-    ;(async () => {
-      try {
-        const { data } = await http.get('/products')
-
-        const formattedMovies = data.products.map((movie: Movie) => ({
-          ...movie,
-          quantity: 0,
-        }))
-
-        setMovies(formattedMovies)
-      } catch (error) {
-        console.log(error)
-      }
-    })()
-  }, [])
+  const { movies, isLoading, error } = useMovies()
 
   function handleOnClick(movie: Movie) {
     addToCart(movie)
   }
 
+  if (error) {
+    toast('Ocorreu um erro ao buscar os filmes')
+  }
+
   return (
     <MainLayout>
       <div className={styles.container}>
-        {movies.length ? (
+        {!isLoading ? (
           movies.map((movie) => (
             <div key={movie.id} className={styles.card}>
               <img
